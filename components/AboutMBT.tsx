@@ -50,7 +50,7 @@ const AboutUs = () => {
       id: 1,
       name: "Arun Kumar",
       role: "Digital Marketing Specialist",
-      experience: "8 months experience",
+      experience: "1 year experience",
       skills: [
         "SEO",
         "Social Media Marketing",
@@ -62,9 +62,9 @@ const AboutUs = () => {
         "Arun drives our digital marketing strategies with creative campaigns that deliver measurable results. He specializes in growing online presence and converting visitors into customers.",
       image: "/arun.jpeg",
       socials: {
-        linkedin: "#",
-        twitter: "#",
-        instagram: "#",
+        linkedin: "https://github.com/arunyadav21",
+        twitter: "https://x.com/ArunYadav143420",
+        instagram: "https://www.instagram.com/travelwitharun1/",
         email: "mailto:arun@madebythree.com",
       },
     },
