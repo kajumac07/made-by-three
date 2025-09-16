@@ -226,7 +226,7 @@ export default function AboutMe() {
                     <div className="w-2 h-2 bg-white rounded-full"></div>
                   </div>
                   <div>
-                    <p className="font-semibold text-lg text-slate-800">2025 — Company founded</p>
+                    <p className="font-semibold text-lg text-slate-800">Jan-2025 — Company founded</p>
                     <p className="mt-2 text-slate-600">Started as a small team focused on web presence and ads management.</p>
                   </div>
                 </div>
@@ -236,7 +236,7 @@ export default function AboutMe() {
                     <div className="w-2 h-2 bg-white rounded-full"></div>
                   </div>
                   <div>
-                    <p className="font-semibold text-lg text-slate-800">2026 — First 10 clients</p>
+                    <p className="font-semibold text-lg text-slate-800">Sep-2025 — First 10 clients</p>
                     <p className="mt-2 text-slate-600">Delivered websites and ad campaigns for local businesses.</p>
                   </div>
                 </div>

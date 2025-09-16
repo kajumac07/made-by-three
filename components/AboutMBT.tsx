@@ -62,7 +62,7 @@ const AboutUs = () => {
         "Arun drives our digital marketing strategies with creative campaigns that deliver measurable results. He specializes in growing online presence and converting visitors into customers.",
       image: "/arun.jpeg",
       socials: {
-        linkedin: "https://github.com/arunyadav21",
+        github: "https://github.com/arunyadav21",
         twitter: "https://x.com/ArunYadav143420",
         instagram: "https://www.instagram.com/travelwitharun1/",
         email: "mailto:arun@madebythree.com",
