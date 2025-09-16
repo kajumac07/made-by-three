@@ -87,9 +87,19 @@ const AboutUs = () => {
     {
       id: 3,
       name: "Atul Tiwari",
-      role: "Full Stack Developer",
+      role: "App Developer",
       experience: "3 years experience",
-      skills: ["Flutter", "React", "Firebase", "iOS Development", "Node.js"],
+      skills: [
+        "Flutter",
+        "Getx",
+        "Firebase",
+        "Cloud Functions",
+        "Push Notifications",
+        "Play Store Deployment",
+        "Next.js",
+        "iOS Development",
+        "SwiftUI",
+      ],
       description:
         "Atul brings extensive experience in both app and web development. He builds cross-platform solutions that work seamlessly across all devices and platforms.",
       image: "/api/placeholder/300/300",
