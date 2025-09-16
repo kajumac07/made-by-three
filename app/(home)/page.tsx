@@ -1,3 +1,4 @@
+import AboutUs from "@/components/AboutMBT";
 import Hero from "@/components/HeroComponent";
 import Portfolio from "@/components/PortfolioComponent";
 import Services from "@/components/ServicesComponent";
@@ -8,6 +9,7 @@ export default function HomePage() {
       <Hero />
       <Services />
       <Portfolio />
+      <AboutUs />
     </main>
   );
 }
