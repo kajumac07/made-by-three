@@ -1,14 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Star,
-  Quote,
-  ArrowLeft,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 interface Testimonial {
   id: number;
@@ -30,7 +24,7 @@ const Testimonials = () => {
       name: "Sarah Johnson",
       role: "Marketing Director",
       company: "NexTech Solutions",
-      image: "/api/placeholder/80/80",
+      image: "/testimonal_1.png",
       content:
         "MadeByThree transformed our online presence completely. Their web development and marketing strategies increased our conversion rate by 140% in just three months. Their team is professional, creative, and delivers on time.",
       rating: 5,
@@ -41,7 +35,7 @@ const Testimonials = () => {
       name: "Michael Chen",
       role: "Founder & CEO",
       company: "StartupVision",
-      image: "/api/placeholder/80/80",
+      image: "/testimonal_2.png",
       content:
         "Working with Arun, Vipin, and Atul was a game-changer for our startup. They built our mobile app and web platform with incredible attention to detail. Their technical expertise across different platforms is impressive.",
       rating: 5,
@@ -52,7 +46,7 @@ const Testimonials = () => {
       name: "Emily Rodriguez",
       role: "Creative Director",
       company: "Lumina Studios",
-      image: "/api/placeholder/80/80",
+      image: "/testimonal_3.png",
       content:
         "The team at MadeByThree understands brand identity like no one else. They created a stunning website that perfectly captures our studio's aesthetic while implementing powerful SEO strategies that boosted our visibility.",
       rating: 5,
@@ -63,7 +57,7 @@ const Testimonials = () => {
       name: "David Kim",
       role: "Product Manager",
       company: "TechGrowth Inc.",
-      image: "/api/placeholder/80/80",
+      image: "/testimonal_4.png",
       content:
         "We've worked with many developers, but MadeByThree stands out for their communication skills and ability to understand our vision. They delivered a complex project ahead of schedule with flawless execution.",
       rating: 5,
@@ -114,10 +108,17 @@ const Testimonials = () => {
               <div className="flex items-start mb-6">
                 <div className="mr-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-blue-100">
-                    <img
+                    {/* <img
                       src={testimonials[activeIndex].image}
                       alt={testimonials[activeIndex].name}
                       className="w-full h-full object-cover"
+                    /> */}
+                    <Image
+                      src={testimonials[activeIndex].image}
+                      alt={testimonials[activeIndex].name}
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-fill"
                     />
                   </div>
                 </div>
@@ -172,10 +173,18 @@ const Testimonials = () => {
               >
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-                    <img
+                    {/* <img
                       src={testimonial.image}
                       alt={testimonial.name}
                       className="w-full h-full object-cover"
+                    /> */}
+
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-fill"
                     />
                   </div>
                   <div>

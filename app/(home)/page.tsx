@@ -1,4 +1,5 @@
 import AboutUs from "@/components/AboutMBT";
+import CTASection from "@/components/CTA";
 import Hero from "@/components/HeroComponent";
 import Portfolio from "@/components/PortfolioComponent";
 import Services from "@/components/ServicesComponent";
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Portfolio />
       <AboutUs />
       <Testimonials />
+      <CTASection />
     </main>
   );
 }
