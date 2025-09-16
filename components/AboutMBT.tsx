@@ -60,7 +60,7 @@ const AboutUs = () => {
       ],
       description:
         "Arun drives our digital marketing strategies with creative campaigns that deliver measurable results. He specializes in growing online presence and converting visitors into customers.",
-      image: "/api/placeholder/400/400",
+      image: "/arun.jpeg",
       socials: {
         linkedin: "#",
         twitter: "#",
@@ -76,7 +76,7 @@ const AboutUs = () => {
       skills: ["React", "Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
       description:
         "Vipin creates stunning, responsive web applications with clean code and modern frameworks. He focuses on delivering fast, accessible, and user-friendly experiences.",
-      image: "/api/placeholder/400/400",
+      image: "/vipin.jpeg",
       socials: {
         github: "#",
         linkedin: "#",
