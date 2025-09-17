@@ -246,7 +246,7 @@ const AboutUs = () => {
           <div className="flex items-center gap-3 mb-4">
             <Calendar className="w-7 h-7 text-blue-600" />
             <span className="text-lg font-semibold text-blue-600">
-              Founded 2023
+              Founded 2025
             </span>
           </div>
           <h3 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
