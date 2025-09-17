@@ -14,6 +14,18 @@ import {
   Linkedin,
   Twitter,
   Instagram,
+  Code,
+  Cpu,
+  Database,
+  Globe,
+  Smartphone,
+  TrendingUp,
+  BarChart3,
+  Target,
+  Search,
+  MailOpen,
+  Zap,
+  HeartHandshake,
 } from "lucide-react";
 
 type ServiceKey = "web" | "app" | "marketing";
@@ -105,6 +117,26 @@ export default function AboutMe() {
     },
   };
 
+  // Tech stack icons with colors
+  const techStack = [
+    { icon: <Code size={20} />, name: "Next.js", color: "text-black" },
+    { icon: <Cpu size={20} />, name: "React", color: "text-blue-500" },
+    { icon: <Database size={20} />, name: "MongoDB", color: "text-green-600" },
+    { icon: <Globe size={20} />, name: "Node.js", color: "text-green-500" },
+    { icon: <Smartphone size={20} />, name: "Flutter", color: "text-blue-400" },
+    { icon: <TrendingUp size={20} />, name: "Firebase", color: "text-yellow-500" },
+  ];
+
+  // Marketing services
+  const marketingServices = [
+    { icon: <Search size={18} />, name: "SEO Optimization", desc: "Rank higher on search engines" },
+    { icon: <BarChart3 size={18} />, name: "Social Media Marketing", desc: "Engage your audience" },
+    { icon: <Target size={18} />, name: "PPC Campaigns", desc: "Targeted advertising" },
+    { icon: <MailOpen size={18} />, name: "Email Marketing", desc: "Convert leads to customers" },
+    { icon: <Zap size={18} />, name: "Content Strategy", desc: "Valuable content that converts" },
+    { icon: <TrendingUp size={18} />, name: "Analytics & Reporting", desc: "Data-driven decisions" },
+  ];
+
   return (
     <main className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-16 px-4">
       {/* Background decorative elements */}
@@ -114,8 +146,9 @@ export default function AboutMe() {
 
       <section className="relative z-10 max-w-6xl w-full">
         <div className="md:flex gap-8">
-          {/* Left: Profile card - Hero style */}
-          <div className="md:w-2/5 mb-8 md:mb-0">
+          {/* Left: Profile card, Tech Stack Card, and Digital Marketing Card */}
+          <div className="md:w-2/5 mb-8 md:mb-0 space-y-6">
+            {/* Profile Card */}
             <div className="relative bg-white rounded-2xl shadow-2xl p-6 transform -rotate-1">
               <div className="absolute -top-4 -right-4 bg-blue-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                 Founders
@@ -204,6 +237,92 @@ export default function AboutMe() {
               <div className="absolute -top-6 -right-6 w-28 h-28 bg-purple-100 rounded-2xl transform rotate-6 z-[-1]"></div>
             </div>
 
+            {/* Tech Stack Card */}
+            <div className="relative bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl shadow-2xl p-6 text-white transform rotate-1">
+              <div className="absolute -top-3 -left-3 w-6 h-6 bg-yellow-400 rounded-full"></div>
+              <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-green-400 rounded-full"></div>
+              
+              <h3 className="text-xl font-bold mb-4 flex items-center">
+                <Cpu className="mr-2" size={20} />
+                Our Tech Stack
+              </h3>
+              
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                {techStack.map((tech, index) => (
+                  <div 
+                    key={index} 
+                    className="bg-white/10 backdrop-blur-sm rounded-lg p-3 flex items-center space-x-2 transition-all hover:bg-white/20"
+                  >
+                    <div className={tech.color}>{tech.icon}</div>
+                    <span className="text-sm font-medium">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="bg-black/20 rounded-lg p-3 mt-4">
+                <h4 className="text-sm font-semibold mb-2">Specialized In</h4>
+                <div className="flex flex-wrap gap-2">
+                  {["SPAs", "PWAs", "Responsive UI", "API Integration", "Cloud Functions", "SEO"].map((item, idx) => (
+                    <span key={idx} className="text-xs bg-white/20 px-2 py-1 rounded-full">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="absolute top-4 right-4 opacity-20">
+                <Code size={32} />
+              </div>
+            </div>
+
+            {/* Digital Marketing Card */}
+             <div className="relative bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl shadow-2xl p-6 text-white transform rotate-1">
+              <div className="absolute -top-3 -left-3 w-6 h-6 bg-red-400 rounded-full"></div>
+              <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-pink-400 rounded-full"></div>
+              
+              <h3 className="text-xl font-bold mb-4 flex items-center">
+                <BarChart3 className="mr-2" size={20} />
+                Digital Marketing
+              </h3>
+              
+              <p className="text-amber-100 text-sm mb-4">
+                We drive growth through data-driven marketing strategies that convert visitors into customers.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                {marketingServices.map((service, index) => (
+                  <div 
+                    key={index} 
+                    className="bg-white/10 backdrop-blur-sm rounded-lg p-3 transition-all hover:bg-white/20"
+                  >
+                    <div className="flex items-center mb-1">
+                      <div className="text-amber-200 mr-2">{service.icon}</div>
+                      <span className="text-sm font-medium">{service.name}</span>
+                    </div>
+                    <p className="text-amber-100 text-xs opacity-90">{service.desc}</p>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="bg-white/10 rounded-lg p-3 mt-4">
+                <div className="flex items-center mb-2">
+                  <HeartHandshake size={16} className="mr-2 text-amber-200" />
+                  <h4 className="text-sm font-semibold">Our Approach</h4>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {["Data-Driven", "ROI-Focused", "Audience Targeting", "A/B Testing", "Conversion Optimization"].map((item, idx) => (
+                    <span key={idx} className="text-xs bg-amber-500/30 px-2 py-1 rounded-full">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="absolute top-4 right-4 opacity-20">
+                <TrendingUp size={32} />
+              </div>
+            </div>
+
             {/* Floating elements */}
             <div className="absolute -top-4 left-4 bg-white p-3 rounded-lg shadow-lg flex items-center">
               <div className="mr-3">
@@ -256,10 +375,8 @@ export default function AboutMe() {
                   </span>
                 </h2>
                 <p className="mt-4 text-gray-600 text-lg leading-relaxed">
-                  We are three friends — Arun, Atul and Vipin — who turned a
-                  shared passion for web and marketing into a full-service
-                  studio. We create pixel‑perfect websites and run ad campaigns
-                  that actually convert.
+                  We`re three friends — Arun, Atul, and Vipin — who turned our passion for digital into a studio that blends creativity and performance. 
+                  From sleek websites to powerful apps and high-converting marketing campaigns, we help brands grow in the digital space.
                 </p>
               </div>
             </div>
@@ -401,97 +518,6 @@ export default function AboutMe() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div id="contact" className="mt-16 pt-12 border-t border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Get in touch
-              </h3>
-              <p className="text-gray-600 text-lg">
-                Want us to build your website or run your next growth campaign?
-                Send a message.
-              </p>
-
-              <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Your name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-colors"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Email address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-colors"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Tell us about your project
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={5}
-                    className="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-colors"
-                    placeholder="I'm looking for a website for my business..."
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="group w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 shadow-md flex items-center justify-center gap-2"
-                >
-                  Send Message
-                  <ArrowRight
-                    size={20}
-                    className="group-hover:translate-x-1 transition-transform"
-                  />
-                </button>
-              </form>
-
-              <p className="mt-8 text-center text-gray-500">
-                Or email us directly at{" "}
-                <a
-                  href="mailto:hello@madebythree.com"
-                  className="text-blue-600 font-medium hover:underline"
-                >
-                  hello@madebythree.com
-                </a>
-              </p>
             </div>
           </div>
         </div>
