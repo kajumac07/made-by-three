@@ -1,5 +1,5 @@
+import ServicesPageComponent from "@/components/ServicePageComponent";
+
 export default function ServicesPage() {
-  return (
-    <div>ServicesPage</div>
-  )
+  return <ServicesPageComponent />;
 }
