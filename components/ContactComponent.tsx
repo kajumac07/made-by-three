@@ -11,6 +11,12 @@ export default function Contact() {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<null | {
+    type: "success" | "error";
+    msg: string;
+  }>(null);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -21,10 +27,55 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  // Validate inputs before submit
+  const validateForm = () => {
+    if (!formData.name.trim()) return "Name is required";
+    if (!formData.email.trim()) return "Email is required";
+    if (!/\S+@\S+\.\S+/.test(formData.email)) return "Enter a valid email";
+    if (!formData.subject.trim()) return "Subject is required";
+    if (!formData.message.trim()) return "Message is required";
+    return null;
+  };
+
+  // Handle form submit
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
+    setStatus(null);
+
+    const error = validateForm();
+    if (error) {
+      setStatus({ type: "error", msg: error });
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setStatus({
+          type: "success",
+          msg: "Your message has been sent successfully!",
+        });
+      } else {
+        const data = await res.json();
+        setStatus({ type: "error", msg: data.error || "Something went wrong" });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setStatus({
+        type: "error",
+        msg: "Network error. Please try again later.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -188,15 +239,30 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="group w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
+                    disabled={loading}
+                    className="group w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50"
                   >
-                    Send Message
-                    <Send
-                      size={20}
-                      className="group-hover:translate-x-1 transition-transform"
-                    />
+                    {loading ? "Sending..." : "Send Message"}
+                    {!loading && (
+                      <Send
+                        size={20}
+                        className="group-hover:translate-x-1 transition-transform"
+                      />
+                    )}
                   </button>
                 </form>
+                {/* Status message */}
+                {status && (
+                  <p
+                    className={`mt-4 text-sm ${
+                      status.type === "success"
+                        ? "text-green-600"
+                        : "text-red-600"
+                    }`}
+                  >
+                    {status.msg}
+                  </p>
+                )}
               </div>
 
               {/* Decorative elements - same as Hero */}
