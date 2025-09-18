@@ -1,19 +1,21 @@
 import { NextResponse } from "next/server";
 import clientPromise from "../../lib/mongodb";
+import { ObjectId } from "mongodb";
 
 interface Message {
-  _id?: string;
+  _id?: ObjectId;
   name: string;
   email: string;
+  subject: string;
   message: string;
   createdAt: Date;
 }
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message } = await req.json();
+    const { name, email, subject, message } = await req.json();
 
-    if (!name || !email || !message) {
+    if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { error: "All fields required" },
         { status: 400 }
@@ -26,6 +28,7 @@ export async function POST(req: Request) {
     const newMsg: Message = {
       name,
       email,
+      subject,
       message,
       createdAt: new Date(),
     };
@@ -33,11 +36,11 @@ export async function POST(req: Request) {
     const result = await db.collection<Message>("messages").insertOne(newMsg);
 
     return NextResponse.json(
-      { success: true, id: result.insertedId, data: newMsg },
+      { success: true, id: result.insertedId.toString(), data: newMsg },
       { status: 201 }
     );
   } catch (err) {
-    console.error(err);
+    console.error("POST /api/contact error:", err);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }
@@ -56,9 +59,15 @@ export async function GET() {
       .sort({ createdAt: -1 })
       .toArray();
 
-    return NextResponse.json(messages);
+    // Convert _id -> string for safe JSON
+    const safeMessages = messages.map((msg) => ({
+      ...msg,
+      _id: msg._id?.toString(),
+    }));
+
+    return NextResponse.json(safeMessages);
   } catch (err) {
-    console.error(err);
+    console.error("GET /api/contact error:", err);
     return NextResponse.json(
       { error: "Failed to fetch messages" },
       { status: 500 }
