@@ -31,7 +31,7 @@ export default function ServicesPageComponent() {
         "Progressive Web Apps",
         "Performance Optimization",
       ],
-      projects: 42,
+      projects: 4,
       rating: 4.9,
     },
     app: {
@@ -49,7 +49,7 @@ export default function ServicesPageComponent() {
         "App Store Deployment",
         "UI/UX Design",
       ],
-      projects: 28,
+      projects: 8,
       rating: 4.8,
     },
     marketing: {
@@ -67,7 +67,7 @@ export default function ServicesPageComponent() {
         "PPC Advertising",
         "Growth Strategy",
       ],
-      projects: 35,
+      projects: 4,
       rating: 4.7,
     },
   };
@@ -182,13 +182,13 @@ export default function ServicesPageComponent() {
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
                     <span className="text-sm text-gray-700">
-                      150+ Happy Clients
+                      8+ Happy Clients
                     </span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
                     <span className="text-sm text-gray-700">
-                      80+ Projects Completed
+                      8+ Projects Completed
                     </span>
                   </div>
                   <div className="flex items-center">

@@ -127,7 +127,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-gray-600 text-sm">Call us</p>
-                  <p className="text-gray-900 font-medium">+1 (555) 123-4567</p>
+                  <p className="text-gray-900 font-medium">+91 6393168278</p>
                 </div>
               </div>
 
@@ -138,7 +138,7 @@ export default function Contact() {
                 <div>
                   <p className="text-gray-600 text-sm">Visit us</p>
                   <p className="text-gray-900 font-medium">
-                    123 Digital Street, Creative City
+                    Chandigarh Region, India
                   </p>
                 </div>
               </div>

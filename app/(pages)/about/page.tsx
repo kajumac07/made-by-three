@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Star,
   Award,
@@ -31,44 +31,11 @@ type ServiceKey = "web" | "app" | "marketing";
 
 export default function AboutMe() {
   const [activeTab, setActiveTab] = useState<ServiceKey>("web");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [currentText, setCurrentText] = useState(0);
+  // Removed unused formData state to fix compile error.
+  // Removed unused currentText state and rotatingTexts logic to fix compile error.
 
-  const rotatingTexts = [
-    "Web Development",
-    "UI/UX Design",
-    "Digital Marketing",
-  ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentText((prev) => (prev + 1) % rotatingTexts.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! We will get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
-  };
+  // Removed unused handleSubmit function to fix the error.
 
   const services = {
     web: {
@@ -334,86 +301,6 @@ export default function AboutMe() {
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-amber-100 rounded-2xl transform -rotate-12 z-[-1]"></div>
               <div className="absolute -top-6 -right-6 w-28 h-28 bg-orange-100 rounded-2xl transform rotate-6 z-[-1]"></div>
             </div>
-
-            {/* Digital Marketing Card - Updated to match Profile Card */}
-            <div className="relative bg-white rounded-2xl shadow-2xl p-6 transform -rotate-1">
-              <div className="absolute -top-4 -right-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                Growth
-              </div>
-
-              <div className="mb-6 h-32 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl overflow-hidden relative">
-                <div className="absolute inset-0 bg-black/20"></div>
-                <div className="h-full flex items-center justify-center">
-                  <div className="text-white text-center relative z-10">
-                    <div className="text-2xl font-bold mb-2">
-                      Digital Marketing
-                    </div>
-                    <div className="text-sm opacity-90">
-                      Data-Driven Results
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center mb-6">
-                <div className="w-20 h-20 rounded-full overflow-hidden ring-4 ring-white shadow-lg mb-4 -mt-12 relative z-10 bg-white flex items-center justify-center">
-                  <TrendingUp className="text-amber-600" size={32} />
-                </div>
-
-                <h3 className="text-xl font-bold text-gray-900 text-center">
-                  Marketing Services
-                </h3>
-                <p className="text-sm text-gray-600 mt-1 text-center">
-                  We drive growth through data-driven marketing strategies
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                {marketingServices.map((service, index) => (
-                  <div
-                    key={index}
-                    className="bg-gray-50 hover:bg-purple-50 rounded-lg p-3 transition-all border border-gray-100"
-                  >
-                    <div className="flex items-center mb-1">
-                      <div className="text-amber-600 mr-2">{service.icon}</div>
-                      <span className="text-sm font-medium">
-                        {service.name}
-                      </span>
-                    </div>
-                    <p className="text-gray-600 text-xs">{service.desc}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-amber-50 rounded-lg p-4 mt-4">
-                <div className="flex items-center mb-2">
-                  <HeartHandshake size={16} className="mr-2 text-amber-600" />
-                  <h4 className="text-sm font-semibold text-gray-900">
-                    Our Approach
-                  </h4>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Data-Driven",
-                    "ROI-Focused",
-                    "Audience Targeting",
-                    "A/B Testing",
-                    "Conversion Optimization",
-                  ].map((item, idx) => (
-                    <span
-                      key={idx}
-                      className="text-xs bg-white text-amber-700 px-2 py-1 rounded-full border border-amber-100"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-purple-100 rounded-2xl transform -rotate-12 z-[-1]"></div>
-              <div className="absolute -top-6 -right-6 w-28 h-28 bg-pink-100 rounded-2xl transform rotate-6 z-[-1]"></div>
-            </div>
           </div>
 
           {/* Right: Content */}
@@ -446,7 +333,7 @@ export default function AboutMe() {
               <div className="text-center">
                 <div className="flex items-center justify-center">
                   <Users className="text-blue-600 mr-2" size={20} />
-                  <span className="text-2xl font-bold text-gray-900">150+</span>
+                  <span className="text-2xl font-bold text-gray-900">8+</span>
                 </div>
                 <p className="text-gray-600 text-sm mt-1">Happy Clients</p>
               </div>
@@ -454,7 +341,7 @@ export default function AboutMe() {
               <div className="text-center">
                 <div className="flex items-center justify-center">
                   <Award className="text-purple-600 mr-2" size={20} />
-                  <span className="text-2xl font-bold text-gray-900">80+</span>
+                  <span className="text-2xl font-bold text-gray-900">8+</span>
                 </div>
                 <p className="text-gray-600 text-sm mt-1">Projects Completed</p>
               </div>
@@ -544,41 +431,7 @@ export default function AboutMe() {
               </div>
             </div>
 
-            <div className="mt-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">
-                Our Journey
-              </h3>
-              <div className="space-y-8 border-l-2 border-blue-200 ml-3 pl-8">
-                <div className="relative">
-                  <div className="absolute -left-11 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-lg text-gray-900">
-                      Jan-2025 — Company founded
-                    </p>
-                    <p className="mt-2 text-gray-600">
-                      Started as a small team focused on web presence and ads
-                      management.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <div className="absolute -left-11 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-lg text-gray-900">
-                      Sep-2025 — First 10 clients
-                    </p>
-                    <p className="mt-2 text-gray-600">
-                      Delivered websites and ad campaigns for local businesses.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
@@ -611,3 +464,93 @@ export default function AboutMe() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
+{/* Digital Marketing Card - Updated to match Profile Card */}
+{/*  <div className="relative bg-white rounded-2xl shadow-2xl p-6 transform -rotate-1">
+              <div className="absolute -top-4 -right-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                Growth
+              </div>
+
+              <div className="mb-6 h-32 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="h-full flex items-center justify-center">
+                  <div className="text-white text-center relative z-10">
+                    <div className="text-2xl font-bold mb-2">
+                      Digital Marketing
+                    </div>
+                    <div className="text-sm opacity-90">
+                      Data-Driven Results
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center mb-6">
+                <div className="w-20 h-20 rounded-full overflow-hidden ring-4 ring-white shadow-lg mb-4 -mt-12 relative z-10 bg-white flex items-center justify-center">
+                  <TrendingUp className="text-amber-600" size={32} />
+                </div>
+
+                <h3 className="text-xl font-bold text-gray-900 text-center">
+                  Marketing Services
+                </h3>
+                <p className="text-sm text-gray-600 mt-1 text-center">
+                  We drive growth through data-driven marketing strategies
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                {marketingServices.map((service, index) => (
+                  <div
+                    key={index}
+                    className="bg-gray-50 hover:bg-purple-50 rounded-lg p-3 transition-all border border-gray-100"
+                  >
+                    <div className="flex items-center mb-1">
+                      <div className="text-amber-600 mr-2">{service.icon}</div>
+                      <span className="text-sm font-medium">
+                        {service.name}
+                      </span>
+                    </div>
+                    <p className="text-gray-600 text-xs">{service.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-amber-50 rounded-lg p-4 mt-4">
+                <div className="flex items-center mb-2">
+                  <HeartHandshake size={16} className="mr-2 text-amber-600" />
+                  <h4 className="text-sm font-semibold text-gray-900">
+                    Our Approach
+                  </h4>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Data-Driven",
+                    "ROI-Focused",
+                    "Audience Targeting",
+                    "A/B Testing",
+                    "Conversion Optimization",
+                  ].map((item, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs bg-white text-amber-700 px-2 py-1 rounded-full border border-amber-100"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div> 
+
+               Decorative elements 
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-purple-100 rounded-2xl transform -rotate-12 z-[-1]"></div>
+              <div className="absolute -top-6 -right-6 w-28 h-28 bg-pink-100 rounded-2xl transform rotate-6 z-[-1]"></div>
+            </div> 
+           
+*/}

@@ -22,7 +22,7 @@ export default function Services() {
         "SEO Optimization",
         "Progressive Web Apps",
       ],
-      projects: "150+ Web Projects",
+      projects: "4+ Web Projects",
       color: "from-blue-500 to-cyan-500",
       bgColor: "bg-blue-50",
     },

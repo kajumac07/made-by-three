@@ -158,12 +158,12 @@ const AboutUs = () => {
 
   const stats = [
     {
-      value: "50+",
+      value: "8+",
       label: "Projects Completed",
       icon: <Award className="w-5 h-5" />,
     },
     {
-      value: "30+",
+      value: "8+",
       label: "Happy Clients",
       icon: <Users className="w-5 h-5" />,
     },

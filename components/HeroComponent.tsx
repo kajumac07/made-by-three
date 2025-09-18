@@ -76,7 +76,7 @@ export default function Hero() {
               <div className="text-center lg:text-left">
                 <div className="flex items-center justify-center lg:justify-start">
                   <Users className="text-blue-600 mr-2" size={20} />
-                  <span className="text-2xl font-bold text-gray-900">150+</span>
+                  <span className="text-2xl font-bold text-gray-900">8+</span>
                 </div>
                 <p className="text-gray-600 text-sm">Happy Clients</p>
               </div>
@@ -84,7 +84,7 @@ export default function Hero() {
               <div className="text-center lg:text-left">
                 <div className="flex items-center justify-center lg:justify-start">
                   <Award className="text-purple-600 mr-2" size={20} />
-                  <span className="text-2xl font-bold text-gray-900">80+</span>
+                  <span className="text-2xl font-bold text-gray-900">8+</span>
                 </div>
                 <p className="text-gray-600 text-sm">Projects Completed</p>
               </div>
