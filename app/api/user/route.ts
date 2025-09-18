@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     const existingUser = await db.collection("users").findOne({ email });
     if (existingUser)
       return NextResponse.json(
-        { error: "User already exists" },
+        { error: "User already exists, use another account" },
         { status: 409 }
       );
 
