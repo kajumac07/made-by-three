@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import {
-  ArrowRight,
   Star,
   Award,
   Users,
@@ -124,17 +123,45 @@ export default function AboutMe() {
     { icon: <Database size={20} />, name: "MongoDB", color: "text-green-600" },
     { icon: <Globe size={20} />, name: "Node.js", color: "text-green-500" },
     { icon: <Smartphone size={20} />, name: "Flutter", color: "text-blue-400" },
-    { icon: <TrendingUp size={20} />, name: "Firebase", color: "text-yellow-500" },
+    {
+      icon: <TrendingUp size={20} />,
+      name: "Firebase",
+      color: "text-yellow-500",
+    },
   ];
 
   // Marketing services
   const marketingServices = [
-    { icon: <Search size={18} />, name: "SEO Optimization", desc: "Rank higher on search engines" },
-    { icon: <BarChart3 size={18} />, name: "Social Media Marketing", desc: "Engage your audience" },
-    { icon: <Target size={18} />, name: "PPC Campaigns", desc: "Targeted advertising" },
-    { icon: <MailOpen size={18} />, name: "Email Marketing", desc: "Convert leads to customers" },
-    { icon: <Zap size={18} />, name: "Content Strategy", desc: "Valuable content that converts" },
-    { icon: <TrendingUp size={18} />, name: "Analytics & Reporting", desc: "Data-driven decisions" },
+    {
+      icon: <Search size={18} />,
+      name: "SEO Optimization",
+      desc: "Rank higher on search engines",
+    },
+    {
+      icon: <BarChart3 size={18} />,
+      name: "Social Media Marketing",
+      desc: "Engage your audience",
+    },
+    {
+      icon: <Target size={18} />,
+      name: "PPC Campaigns",
+      desc: "Targeted advertising",
+    },
+    {
+      icon: <MailOpen size={18} />,
+      name: "Email Marketing",
+      desc: "Convert leads to customers",
+    },
+    {
+      icon: <Zap size={18} />,
+      name: "Content Strategy",
+      desc: "Valuable content that converts",
+    },
+    {
+      icon: <TrendingUp size={18} />,
+      name: "Analytics & Reporting",
+      desc: "Data-driven decisions",
+    },
   ];
 
   return (
@@ -237,125 +264,155 @@ export default function AboutMe() {
               <div className="absolute -top-6 -right-6 w-28 h-28 bg-purple-100 rounded-2xl transform rotate-6 z-[-1]"></div>
             </div>
 
-            {/* Tech Stack Card */}
-            <div className="relative bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl shadow-2xl p-6 text-white transform rotate-1">
-              <div className="absolute -top-3 -left-3 w-6 h-6 bg-yellow-400 rounded-full"></div>
-              <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-green-400 rounded-full"></div>
-              
-              <h3 className="text-xl font-bold mb-4 flex items-center">
-                <Cpu className="mr-2" size={20} />
-                Our Tech Stack
-              </h3>
-              
-              <div className="grid grid-cols-2 gap-3 mb-4">
+            {/* Tech Stack Card - Updated to match Profile Card */}
+            <div className="relative bg-white rounded-2xl shadow-2xl p-6 transform rotate-1">
+              <div className="absolute -top-4 -right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                Expertise
+              </div>
+
+              <div className="mb-6 h-32 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="h-full flex items-center justify-center">
+                  <div className="text-white text-center relative z-10">
+                    <div className="text-2xl font-bold mb-2">
+                      Our Tech Stack
+                    </div>
+                    <div className="text-sm opacity-90">Modern & Powerful</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center mb-6">
+                <div className="w-20 h-20 rounded-full overflow-hidden ring-4 ring-white shadow-lg mb-4 -mt-12 relative z-10 bg-white flex items-center justify-center">
+                  <Cpu className="text-blue-600" size={32} />
+                </div>
+
+                <h3 className="text-xl font-bold text-gray-900 text-center">
+                  Technology Expertise
+                </h3>
+                <p className="text-sm text-gray-600 mt-1 text-center">
+                  We use cutting-edge technologies to build powerful solutions
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 mb-6">
                 {techStack.map((tech, index) => (
-                  <div 
-                    key={index} 
-                    className="bg-white/10 backdrop-blur-sm rounded-lg p-3 flex items-center space-x-2 transition-all hover:bg-white/20"
+                  <div
+                    key={index}
+                    className="bg-gray-50 hover:bg-blue-50 rounded-lg p-3 flex items-center space-x-2 transition-all border border-gray-100"
                   >
                     <div className={tech.color}>{tech.icon}</div>
                     <span className="text-sm font-medium">{tech.name}</span>
                   </div>
                 ))}
               </div>
-              
-              <div className="bg-black/20 rounded-lg p-3 mt-4">
-                <h4 className="text-sm font-semibold mb-2">Specialized In</h4>
+
+              <div className="bg-blue-50 rounded-lg p-4 mt-4">
+                <h4 className="text-sm font-semibold mb-2 text-gray-900">
+                  Specialized In
+                </h4>
                 <div className="flex flex-wrap gap-2">
-                  {["SPAs", "PWAs", "Responsive UI", "API Integration", "Cloud Functions", "SEO"].map((item, idx) => (
-                    <span key={idx} className="text-xs bg-white/20 px-2 py-1 rounded-full">
+                  {[
+                    "SPAs",
+                    "PWAs",
+                    "Responsive UI",
+                    "API Integration",
+                    "Cloud Functions",
+                    "SEO",
+                  ].map((item, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs bg-white text-blue-700 px-2 py-1 rounded-full border border-blue-100"
+                    >
                       {item}
                     </span>
                   ))}
                 </div>
               </div>
-              
-              <div className="absolute top-4 right-4 opacity-20">
-                <Code size={32} />
-              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-amber-100 rounded-2xl transform -rotate-12 z-[-1]"></div>
+              <div className="absolute -top-6 -right-6 w-28 h-28 bg-orange-100 rounded-2xl transform rotate-6 z-[-1]"></div>
             </div>
 
-            {/* Digital Marketing Card */}
-             <div className="relative bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl shadow-2xl p-6 text-white transform rotate-1">
-              <div className="absolute -top-3 -left-3 w-6 h-6 bg-red-400 rounded-full"></div>
-              <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-pink-400 rounded-full"></div>
-              
-              <h3 className="text-xl font-bold mb-4 flex items-center">
-                <BarChart3 className="mr-2" size={20} />
-                Digital Marketing
-              </h3>
-              
-              <p className="text-amber-100 text-sm mb-4">
-                We drive growth through data-driven marketing strategies that convert visitors into customers.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-3 mb-4">
+            {/* Digital Marketing Card - Updated to match Profile Card */}
+            <div className="relative bg-white rounded-2xl shadow-2xl p-6 transform -rotate-1">
+              <div className="absolute -top-4 -right-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                Growth
+              </div>
+
+              <div className="mb-6 h-32 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="h-full flex items-center justify-center">
+                  <div className="text-white text-center relative z-10">
+                    <div className="text-2xl font-bold mb-2">
+                      Digital Marketing
+                    </div>
+                    <div className="text-sm opacity-90">
+                      Data-Driven Results
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center mb-6">
+                <div className="w-20 h-20 rounded-full overflow-hidden ring-4 ring-white shadow-lg mb-4 -mt-12 relative z-10 bg-white flex items-center justify-center">
+                  <TrendingUp className="text-amber-600" size={32} />
+                </div>
+
+                <h3 className="text-xl font-bold text-gray-900 text-center">
+                  Marketing Services
+                </h3>
+                <p className="text-sm text-gray-600 mt-1 text-center">
+                  We drive growth through data-driven marketing strategies
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 mb-6">
                 {marketingServices.map((service, index) => (
-                  <div 
-                    key={index} 
-                    className="bg-white/10 backdrop-blur-sm rounded-lg p-3 transition-all hover:bg-white/20"
+                  <div
+                    key={index}
+                    className="bg-gray-50 hover:bg-purple-50 rounded-lg p-3 transition-all border border-gray-100"
                   >
                     <div className="flex items-center mb-1">
-                      <div className="text-amber-200 mr-2">{service.icon}</div>
-                      <span className="text-sm font-medium">{service.name}</span>
+                      <div className="text-amber-600 mr-2">{service.icon}</div>
+                      <span className="text-sm font-medium">
+                        {service.name}
+                      </span>
                     </div>
-                    <p className="text-amber-100 text-xs opacity-90">{service.desc}</p>
+                    <p className="text-gray-600 text-xs">{service.desc}</p>
                   </div>
                 ))}
               </div>
-              
-              <div className="bg-white/10 rounded-lg p-3 mt-4">
+
+              <div className="bg-amber-50 rounded-lg p-4 mt-4">
                 <div className="flex items-center mb-2">
-                  <HeartHandshake size={16} className="mr-2 text-amber-200" />
-                  <h4 className="text-sm font-semibold">Our Approach</h4>
+                  <HeartHandshake size={16} className="mr-2 text-amber-600" />
+                  <h4 className="text-sm font-semibold text-gray-900">
+                    Our Approach
+                  </h4>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {["Data-Driven", "ROI-Focused", "Audience Targeting", "A/B Testing", "Conversion Optimization"].map((item, idx) => (
-                    <span key={idx} className="text-xs bg-amber-500/30 px-2 py-1 rounded-full">
+                  {[
+                    "Data-Driven",
+                    "ROI-Focused",
+                    "Audience Targeting",
+                    "A/B Testing",
+                    "Conversion Optimization",
+                  ].map((item, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs bg-white text-amber-700 px-2 py-1 rounded-full border border-amber-100"
+                    >
                       {item}
                     </span>
                   ))}
                 </div>
               </div>
-              
-              <div className="absolute top-4 right-4 opacity-20">
-                <TrendingUp size={32} />
-              </div>
-            </div>
 
-            {/* Floating elements */}
-            <div className="absolute -top-4 left-4 bg-white p-3 rounded-lg shadow-lg flex items-center">
-              <div className="mr-3">
-                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                  <Star
-                    className="text-green-600"
-                    size={20}
-                    fill="currentColor"
-                  />
-                </div>
-              </div>
-              <div>
-                <div className="text-sm font-semibold">Client Review</div>
-                <div className="text-xs text-gray-500">
-                  &quot;Exceeded expectations!&quot;
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute bottom-4 -right-4 bg-white p-3 rounded-lg shadow-lg">
-              <div className="flex">
-                {[1, 2, 3].map((item) => (
-                  <div
-                    key={item}
-                    className="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center text-white text-xs font-bold -ml-2 first:ml-0 border-2 border-white"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-              <div className="text-xs font-semibold mt-2">
-                Team Collaboration
-              </div>
+              {/* Decorative elements */}
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-purple-100 rounded-2xl transform -rotate-12 z-[-1]"></div>
+              <div className="absolute -top-6 -right-6 w-28 h-28 bg-pink-100 rounded-2xl transform rotate-6 z-[-1]"></div>
             </div>
           </div>
 
@@ -375,8 +432,11 @@ export default function AboutMe() {
                   </span>
                 </h2>
                 <p className="mt-4 text-gray-600 text-lg leading-relaxed">
-                  We`re three friends — Arun, Atul, and Vipin — who turned our passion for digital into a studio that blends creativity and performance. 
-                  From sleek websites to powerful apps and high-converting marketing campaigns, we help brands grow in the digital space.
+                  We`re three friends — Arun, Atul, and Vipin — who turned our
+                  passion for digital into a studio that blends creativity and
+                  performance. From sleek websites to powerful apps and
+                  high-converting marketing campaigns, we help brands grow in
+                  the digital space.
                 </p>
               </div>
             </div>
