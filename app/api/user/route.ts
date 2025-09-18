@@ -2,12 +2,13 @@ import { NextResponse } from "next/server";
 import clientPromise from "../../lib/mongodb";
 import bcrypt from "bcryptjs";
 import { ObjectId } from "mongodb";
+import jwt from "jsonwebtoken";
 
 interface User {
-  _id?: string;
+  _id: string;
   name: string;
   email: string;
-  password: string;
+  passwordHash: string;
   type: "admin" | "client" | "customer";
   createdAt: Date;
 }
@@ -15,11 +16,10 @@ interface User {
 // POST /api/users → create a user
 export async function POST(req: Request) {
   try {
-    const { name, email, password, type } = await req.json();
-
-    if (!name || !email || !password || !type) {
+    const { email, password } = await req.json();
+    if (!email || !password) {
       return NextResponse.json(
-        { error: "All fields (name, email, password, type) are required" },
+        { error: "Email and password required" },
         { status: 400 }
       );
     }
@@ -27,40 +27,33 @@ export async function POST(req: Request) {
     const client = await clientPromise;
     const db = client.db(process.env.MONGODB_DB);
 
-    // Check if user already exists
-    const existingUser = await db.collection("users").findOne({ email });
-    if (existingUser) {
+    // Find admin user
+    const user = await db
+      .collection<User>("users")
+      .findOne({ email, type: "admin" });
+    if (!user)
       return NextResponse.json(
-        { error: "User with this email already exists" },
-        { status: 409 }
+        { error: "Invalid credentials" },
+        { status: 401 }
       );
-    }
 
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const isValid = await bcrypt.compare(password, user.passwordHash);
+    if (!isValid)
+      return NextResponse.json(
+        { error: "Invalid credentials" },
+        { status: 401 }
+      );
 
-    const newUser: Omit<User, "password"> & { passwordHash: string } = {
-      name,
-      email,
-      passwordHash: hashedPassword,
-      type,
-      createdAt: new Date(),
-    };
-
-    const { _id, ...userToInsert } = newUser;
-
-    const result = await db.collection("users").insertOne(userToInsert);
-
-    return NextResponse.json(
-      {
-        success: true,
-        id: result.insertedId,
-        user: { ...newUser, passwordHash: undefined },
-      },
-      { status: 201 }
+    // Create JWT
+    const token = jwt.sign(
+      { userId: user._id, type: user.type },
+      process.env.JWT_SECRET!,
+      { expiresIn: "1d" }
     );
+
+    return NextResponse.json({ token });
   } catch (err) {
-    console.error("POST /api/users error:", err);
+    console.error("POST /api/auth/login error:", err);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }
